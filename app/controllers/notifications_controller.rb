@@ -9,7 +9,18 @@ class NotificationsController < ApplicationController
     @notifications = Notification.all
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @notifications }
+      format.json {
+        tmp = TmpJson.new
+        notification = @notifications.last
+        tmp.id = notification.ntype
+        tmp.date = notification.created_at
+        tmp.content = notification.text
+        render json: tmp.to_json
+=begin
+        render json: .map{|notification| { :id => notification.ntype, :date =>  notification.created_at, :content => notification.text} }
+=end
+      }
+
     end
   end
 
@@ -47,5 +58,10 @@ class NotificationsController < ApplicationController
   private
   def notification_params
     params.require(:notification).permit(:title, :text, :ntype)
+  end
+
+  class TmpJson
+    attr_accessor :id, :date, :content
+
   end
 end

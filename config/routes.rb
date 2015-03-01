@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
   resources :notifications
-  get 'notifications/index'
+  get 'notification/index', to: 'notifications#index'
 end
