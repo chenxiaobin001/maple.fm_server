@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     authorize @user
-  endgit
+  end
 
   def update
     @user = User.find(params[:id])
