@@ -4,6 +4,11 @@ class NotificationsController < ApplicationController
 
   respond_to :json
 
+  def index1
+    @notifications = Notification.all
+    render 'index1'
+  end
+
   def index
     @date = Time.now
     @notifications = Notification.all

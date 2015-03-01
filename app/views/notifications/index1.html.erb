@@ -1,0 +1,25 @@
+<div class="container">
+  <%= link_to 'New notification', new_notification_path %>
+
+  <h1>Listing notifications</h1>
+
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Type</th>
+      <th>Text</th>
+    </tr>
+
+    <% @notifications.each do |notification| %>
+        <tr>
+          <td><%= notification.title%>      |</td>
+          <td><%= notification.ntype %>     |</td>
+          <td><%= notification.text %>      | </td>
+          <td><%= notification.created_at %>     | </td>
+
+          <td><%= link_to 'Show', notification_path(notification) %></td>
+          <td><%= link_to 'Edit', edit_notification_path(notification) %></td>
+        </tr>
+    <% end %>
+  </table>
+</div>

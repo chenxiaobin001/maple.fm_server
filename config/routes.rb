@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :users
   resources :notifications
   get 'notification/index', to: 'notifications#index'
+  get 'notification/index1', to: 'notifications#index1'
 end
