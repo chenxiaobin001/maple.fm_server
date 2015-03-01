@@ -18,7 +18,7 @@ class NotificationsController < ApplicationController
         tmp = TmpJson.new
         notification = @notifications.last
         tmp.id = notification.ntype
-        tmp.date = notification.created_at
+        tmp.date = notification.created_at.to_date
         tmp.content = notification.text
         render json: tmp.to_json
 =begin
