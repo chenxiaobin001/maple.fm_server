@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150307032126) do
+ActiveRecord::Schema.define(version: 20150307053851) do
 
   create_table "notifications", force: :cascade do |t|
     t.string   "title"
@@ -103,6 +103,8 @@ ActiveRecord::Schema.define(version: 20150307032126) do
     t.datetime "updated_at"
     t.string   "name"
     t.integer  "role"
+    t.string   "device_token"
+    t.integer  "server"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

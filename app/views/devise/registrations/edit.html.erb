@@ -23,6 +23,14 @@
         <%= f.label :password_confirmation %>
         <%= f.password_field :password_confirmation, class: 'form-control' %>
       </div>
+      <div class="form-group">
+        <%= f.label :device_token %>
+        <%= f.text_field :device_token, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :server %>
+        <%= f.text_field :server, class: 'form-control' %>
+      </div>
     </fieldset>
     <fieldset>
       <p>You must enter your current password to make changes.</p>

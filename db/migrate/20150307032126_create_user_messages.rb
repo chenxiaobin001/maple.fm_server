@@ -6,6 +6,5 @@ class CreateUserMessages < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    execute "ALTER TABLE 'user_messages' ADD PRIMARY KEY (user_id,message_id);"
   end
 end
