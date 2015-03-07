@@ -4,21 +4,6 @@ class NotificationsController < ApplicationController
 
   respond_to :json
 
-  def push
-
-    n = Rpush::Gcm::Notification.new
-    n.app = Rpush::Gcm::App.find_by_name("maple.fm")
-    n.registration_ids = ["APA91bGaf5el8b5KNlJvKWFGk5m22Ak1sbi5iRIbWuoKCy92FYyQ4dL32P5aPCIhe_h7Hhgmy2kQjDIj6t9feFuagaRu7mk-xSz6bFuL6jNavy_eJFrViw8-a5P-NIIKVGGx2xjEntK3PyEmc4r_A4Ssp05oGvKbJw"]
-    n.data = { message: "hi mom!" }
-    n.save!
-
-    user_message = UserMessage.new
-    user_message.user_id = 2
-    user_message.message_id = n.id
-    user_message.save!
-    render :nothing => true
-  end
-
   def index1
     @notifications = Notification.all
     render 'index1'
@@ -30,8 +15,9 @@ class NotificationsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json {
-        tmp = TmpJson.new
+        tmp = ResJSON.new
         notification = @notifications.last
+        tmp.title = notification.title
         tmp.id = notification.ntype
         tmp.date = notification.created_at.to_date
         tmp.content = notification.text
@@ -80,8 +66,4 @@ class NotificationsController < ApplicationController
     params.require(:notification).permit(:title, :text, :ntype)
   end
 
-  class TmpJson
-    attr_accessor :id, :date, :content
-
-  end
 end

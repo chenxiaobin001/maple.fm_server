@@ -11,9 +11,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  protected
+
+
+  class ResJSON
+    attr_accessor :title, :id, :date, :content
+  end
 
 =begin
+  protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :device_token << :server << :name
     devise_parameter_sanitizer.for(:account_update) << :device_token << :server << :name

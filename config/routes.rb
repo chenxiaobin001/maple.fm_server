@@ -2,8 +2,6 @@ Rails.application.routes.draw do
 
 #  devise_for :users, :controllers => { :registrations => "users/registrations" }
 
-  get 'messages/index'
-  get 'users/:id/messages', to: 'users#messages'
   get 'gcm_app/index'
 
   root to: 'visitors#index'
@@ -13,8 +11,12 @@ Rails.application.routes.draw do
   resources :messages, :only => [:index, :show]
   get 'notification/index', to: 'notifications#index'
   get 'notification/index1', to: 'notifications#index1'
-  get 'notification/push', to: 'notifications#push'
 
+
+  #messages
+  get 'message/push', to: 'messages#push'
+  get 'messages/index'
+  get 'users/:id/messages', to: 'users#messages'
 
   #settings
   get 'config/index'
