@@ -1,8 +1,18 @@
 class NotificationsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:index]
-  before_filter :require_admin, :except => [:index]
+  before_filter :authenticate_user!, :except => [:index, :push]
+  before_filter :require_admin, :except => [:index, :push]
 
   respond_to :json
+
+  def push
+
+    n = Rpush::Gcm::Notification.new
+    n.app = Rpush::Gcm::App.find_by_name("maple.fm")
+    n.registration_ids = ["APA91bGaf5el8b5KNlJvKWFGk5m22Ak1sbi5iRIbWuoKCy92FYyQ4dL32P5aPCIhe_h7Hhgmy2kQjDIj6t9feFuagaRu7mk-xSz6bFuL6jNavy_eJFrViw8-a5P-NIIKVGGx2xjEntK3PyEmc4r_A4Ssp05oGvKbJw"]
+    n.data = { message: "hi mom!" }
+    n.save!
+    render :nothing => true
+  end
 
   def index1
     @notifications = Notification.all

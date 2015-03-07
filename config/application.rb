@@ -34,5 +34,18 @@ module RailsDevisePundit
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # initialize app gcm setting
+=begin
+    config.after_initialize do
+      app = Rpush::Gcm::App.new
+      app.name = "android_app"
+      app.auth_key = "AIzaSyCLzr699rF4OPW4PnvL5uXacA4SBubJnn0"
+      app.connections = 1
+      app.save!
+    end
+=end
   end
 end
+
+

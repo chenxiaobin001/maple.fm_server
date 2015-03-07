@@ -1,0 +1,25 @@
+<div class="container">
+
+  <h1>Listing Apps</h1>
+
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>key</th>
+      <th>Connections</th>
+      <th>Created_at</th>
+    </tr>
+
+      <% @apps.each do |app| %>
+      <tr>
+        <td><%= app.name%>      |</td>
+        <td><%= app.auth_key %>     |</td>
+        <td><%= app.connections %>      | </td>
+        <td><%= app.created_at %>     | </td>
+
+        <td><%= link_to 'Show', config_gcm_show_path(app) %></td>
+        <td><%= link_to 'Edit', config_gcm_edit_path(app) %></td>
+      </tr>
+  <% end %>
+  </table>
+</div>
