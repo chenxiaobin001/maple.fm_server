@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
 
 
+  get 'messages/index'
+
   get 'gcm_app/index'
 
   root to: 'visitors#index'
   devise_for :users
   resources :users
   resources :notifications
+  resources :messages, :only => [:index, :show]
   get 'notification/index', to: 'notifications#index'
   get 'notification/index1', to: 'notifications#index1'
   get 'notification/push', to: 'notifications#push'
