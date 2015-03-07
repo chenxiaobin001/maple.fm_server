@@ -4,6 +4,7 @@
 <td>
   <%= link_to user.id.to_s, "/users/"+user.id.to_s+"/messages" %>
 </td>
+
 <td>
   <%= form_for(user) do |f| %>
     <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}) %>
@@ -12,4 +13,10 @@
 </td>
 <td>
   <%= link_to("Delete user", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'button-xs') unless user == current_user %>
+</td>
+<td>
+  <%= user.server.to_s%>
+</td>
+<td>
+  <%= user.device_token%>
 </td>
