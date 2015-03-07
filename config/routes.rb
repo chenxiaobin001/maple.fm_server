@@ -14,9 +14,10 @@ Rails.application.routes.draw do
 
   #settings
   get 'config/index'
-  get 'config/gcm/index' , to: 'gcm_app#index'
+  get 'config/gcm/' , to: 'gcm_app#index'
   get 'config/gcm/new', to: 'gcm_app#new'
-  get 'config/gcm/show', to: 'gcm_app#show'
-  get 'config/gcm/edit', to: 'gcm_app#edit'
+  get 'config/gcm/:id', to: 'gcm_app#show'
+  get 'config/gcm/:id/edit', to: 'gcm_app#edit'
+  put 'config/gcm/:id', to: 'gcm_app#update'
 
 end

@@ -17,8 +17,8 @@
         <td><%= app.connections %>      | </td>
         <td><%= app.created_at %>     | </td>
 
-        <td><%= link_to 'Show', config_gcm_show_path(app) %></td>
-        <td><%= link_to 'Edit', config_gcm_edit_path(app) %></td>
+        <td><%= link_to 'Show', gcm_app_path(app) %></td>
+        <td><%= link_to 'Edit', edit_gcm_app_path(app) %></td>
       </tr>
   <% end %>
   </table>
