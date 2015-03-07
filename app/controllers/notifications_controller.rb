@@ -11,6 +11,11 @@ class NotificationsController < ApplicationController
     n.registration_ids = ["APA91bGaf5el8b5KNlJvKWFGk5m22Ak1sbi5iRIbWuoKCy92FYyQ4dL32P5aPCIhe_h7Hhgmy2kQjDIj6t9feFuagaRu7mk-xSz6bFuL6jNavy_eJFrViw8-a5P-NIIKVGGx2xjEntK3PyEmc4r_A4Ssp05oGvKbJw"]
     n.data = { message: "hi mom!" }
     n.save!
+
+    user_message = UserMessage.new
+    user_message.user_id = 2
+    user_message.message_id = n.id
+    user_message.save!
     render :nothing => true
   end
 

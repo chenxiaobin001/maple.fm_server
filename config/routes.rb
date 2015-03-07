@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 
   get 'messages/index'
-
+  get 'users/:id/messages', to: 'users#messages'
   get 'gcm_app/index'
 
   root to: 'visitors#index'

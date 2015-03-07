@@ -7,3 +7,11 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 user = CreateAdminService.new.call
 puts 'CREATED ADMIN USER: ' << user.email
+
+app = Rpush::Gcm::App.new
+app.name = "maple.fm"
+app.auth_key = "AIzaSyCLzr699rF4OPW4PnvL5uXacA4SBubJnn0"
+app.connections = 1
+app.save!
+
+puts 'CREATED ADMIN USER: ' << app.name

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150306221920) do
+ActiveRecord::Schema.define(version: 20150307032126) do
 
   create_table "notifications", force: :cascade do |t|
     t.string   "title"
@@ -80,6 +80,13 @@ ActiveRecord::Schema.define(version: 20150306221920) do
 
   add_index "rpush_notifications", ["app_id", "delivered", "failed", "deliver_after"], name: "index_rapns_notifications_multi"
   add_index "rpush_notifications", ["delivered", "failed"], name: "index_rpush_notifications_multi", where: "NOT delivered AND NOT failed"
+
+  create_table "user_messages", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "message_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

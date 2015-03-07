@@ -1,0 +1,22 @@
+<div class="container">
+
+  <h1>Listing Messages</h1>
+
+  <table>
+    <tr>
+      <th>User</th>
+      <th>Text</th>
+      <th>Date</th>
+    </tr>
+
+    <% @messages.each do |message| %>
+        <tr>
+          <td><%= message.id%>      |</td>
+          <td><%= message.data %>      | </td>
+          <td><%= message.created_at %>     | </td>
+
+          <td><%= link_to 'Show', message_path(message) %></td>
+        </tr>
+    <% end %>
+  </table>
+</div>

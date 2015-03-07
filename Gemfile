@@ -8,6 +8,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'rpush'
+gem 'composite_primary_keys', '~> 8.0.0'
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
-  after_action :verify_authorized
+  after_action :verify_authorized, except: [:messages]
+  before_filter :require_admin, only: [:messages]
 
   def index
     @users = User.all
@@ -27,6 +28,18 @@ class UsersController < ApplicationController
     authorize user
     user.destroy
     redirect_to users_path, :notice => "User deleted."
+  end
+
+
+  def messages
+    @user_messages = UserMessage.where(:user_id => params[:id])
+    ids = []
+    @user_messages.each do |message|
+      ids << message.message_id
+    end
+    @messages = Rpush::Gcm::Notification.where(id: ids)
+    puts @messages.size
+    render 'messages'
   end
 
   private
