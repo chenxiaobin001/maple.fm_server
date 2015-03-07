@@ -127,12 +127,14 @@ Rpush.reflect do |on|
   # on.error do |error|
   # end
 end
-
 =begin
+
 if defined?(Rails)
   ActiveSupport.on_load(:after_initialize) do
     Rpush.embed
   end
 else
   Rpush.embed
-end=end
+end
+
+=end
