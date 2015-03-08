@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!, except: [:jsonUpdate, :jsonSignUp]
-  after_action :verify_authorized, except: [:messages, :jsonUpdate, :jsonSignUp]
+  before_filter :authenticate_user!, except: [:jsonUpdate, :jsonSignUp, :jsonSignOut]
+  after_action :verify_authorized, except: [:messages, :jsonUpdate, :jsonSignUp, :jsonSignOut]
   before_filter :require_admin, only: [:messages]
 
   def index
@@ -68,7 +68,10 @@ class UsersController < ApplicationController
     render plain:@msg
   end
 
-
+  def jsonSignOut
+    @msg = gen_res_message("User signOut", Time.now.to_date, MsgType[:user_suc], "successfully sign out")
+    render plain:@msg
+  end
 
 
 

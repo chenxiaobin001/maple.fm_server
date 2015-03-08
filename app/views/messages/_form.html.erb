@@ -1,0 +1,12 @@
+<%= form_tag '/message/push' do %>
+    <%=label_tag 'sender' %>
+    <%=text_field_tag 'sender'%>
+
+    <%=label_tag 'text' %>
+    <%=text_field_tag 'text'%>
+
+    <%=label_tag 'server' %>
+    <%=text_field_tag 'server'%>
+
+    <%= submit_tag 'Save' %>
+<% end %>

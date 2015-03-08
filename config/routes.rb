@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 #  devise_for :users
   resources :users
   resources :notifications
-  resources :messages, :only => [:index, :show]
+  resources :messages, :only => [:index, :show, :new, :create]
   get 'notification/index', to: 'notifications#index'
   get 'notification/index1', to: 'notifications#index1'
 
@@ -22,9 +22,10 @@ Rails.application.routes.draw do
   get '/user/json/signUp', to: 'users#jsonSignUp'
   get '/user/json/signUpFail', to: 'users#jsonSignUpFail'
   get '/user/json/update', to: 'users#jsonUpdate'
+  get '/user/json/signOut', to: 'users#jsonSignOut'
 
   #messages
-  get 'message/push', to: 'messages#push'
+  post 'message/push', to: 'messages#push'
   get 'messages/index'
   get 'users/:id/messages', to: 'users#messages'
 

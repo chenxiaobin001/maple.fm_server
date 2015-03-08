@@ -31,6 +31,10 @@ class ApplicationController < ActionController::Base
     res.to_json
   end
 
+  def after_sign_out_path_for(resource_or_scope)
+    '/user/json/signOut'
+  end
+
 =begin
   protected
   def configure_permitted_parameters
