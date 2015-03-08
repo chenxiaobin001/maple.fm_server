@@ -17,11 +17,7 @@ class NotificationsController < ApplicationController
       format.json {
         tmp = ResJSON.new
         notification = @notifications.last
-        tmp.title = notification.title
-        tmp.id = notification.ntype
-        tmp.date = notification.created_at.to_date
-        tmp.content = notification.text
-        render json: tmp.to_json
+        render json: gen_res_message(notification.title, notification.created_at.to_date, notification.ntype, notification.text)
 =begin
         render json: .map{|notification| { :id => notification.ntype, :date =>  notification.created_at, :content => notification.text} }
 =end

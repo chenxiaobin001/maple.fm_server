@@ -25,14 +25,14 @@ class MessagesController < ApplicationController
       user_message.save!
       respond_to do |format|
         format.html {
-          render plain: gen_success_message(user_message.created_at.to_date)
+          render plain: gen_res_message(nil, user_message.created_at.to_date, MsgType[:msg_suc], "success")
         }
  #       format.json render json: gen_success_message(user_message.created_at.to_date)
       end
     else
       respond_to do |format|
         format.html {
-          render plain: gen_error_message(n.created_at.to_date)
+          render plain: gen_res_message(nil, n.created_at.to_date, MsgType[:msg_err], "failed to send")
         }
  #       format.json render json: gen_error_message(n.created_at.to_date)
       end
@@ -42,21 +42,5 @@ class MessagesController < ApplicationController
   end
 
   private
-
-  def gen_error_message(time)
-    res = ResJSON.new
-    res.id = "mapleMsgError"
-    res.date = time
-    res.content = "failed to send"
-    res.to_json
-  end
-
-  def gen_success_message(time)
-    res = ResJSON.new
-    res.id = "mapleMsgSuc"
-    res.date = time
-    res.content = "success"
-    res.to_json
-  end
 
 end

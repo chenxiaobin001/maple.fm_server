@@ -17,6 +17,16 @@ class ApplicationController < ActionController::Base
     attr_accessor :title, :id, :date, :content
   end
 
+  protected
+  def gen_res_message(title, time, msgType, msgContent)
+    res = ResJSON.new
+    res.title = title
+    res.id = msgType
+    res.date = time
+    res.content = msgContent
+    res.to_json
+  end
+
 =begin
   protected
   def configure_permitted_parameters
