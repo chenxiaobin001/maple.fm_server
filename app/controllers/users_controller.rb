@@ -4,12 +4,12 @@ class UsersController < ApplicationController
   before_filter :require_admin, only: [:messages]
 
   def index
-
-  end
-
-  def index1
     @users = User.all
     authorize User
+  end
+
+  def indexj
+
   end
 
   def show

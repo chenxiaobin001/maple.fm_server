@@ -15,7 +15,7 @@ class MessagesController < ApplicationController
     n = Rpush::Gcm::Notification.new
     n.app = Rpush::Gcm::App.find_by_name("maple.fm")
     n.registration_ids = ["APA91bGaf5el8b5KNlJvKWFGk5m22Ak1sbi5iRIbWuoKCy92FYyQ4dL32P5aPCIhe_h7Hhgmy2kQjDIj6t9feFuagaRu7mk-xSz6bFuL6jNavy_eJFrViw8-a5P-NIIKVGGx2xjEntK3PyEmc4r_A4Ssp05oGvKbJw"]
-    n.data = { message: "hi mom!" }
+    n.data = { message: "hi there!" }
     ret = n.save
 
     if ret
