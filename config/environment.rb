@@ -6,4 +6,4 @@ Rails.application.initialize!
 
 
 # constants
-MsgType = {:msg_suc => "mapleMsgSuc", :msg_err => "mapleMsgError", :three => 3}
+MsgType = {:msg_suc => "mapleMsgSuc", :msg_err => "mapleMsgError", :user_err => "mapleUserUpdateError", :user_suc => "mapleUserUpdateSuccessful"}

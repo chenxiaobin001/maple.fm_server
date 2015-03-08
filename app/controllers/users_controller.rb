@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
   def indexj
 
+
   end
 
   def show
@@ -21,9 +22,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     authorize @user
     if @user.update_attributes(secure_params)
-      redirect_to users_path, :notice => "User updated."
+      @msg = gen_res_message("user update", Time.now.to_date, MsgType[:user_suc], "successfully updated user's information")
+#      redirect_to users_path, :notice => "User updated."
+       render plain: @msg
     else
-      redirect_to users_path, :alert => "Unable to update user."
+      @msg = gen_res_message("user update", Time.now.to_date, MsgType[:user_err], "failed to update user's information")
+#      redirect_to users_path, :alert => "Unable to update user."
+      render plain: @msg
     end
   end
 
