@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!
-  after_action :verify_authorized, except: [:messages]
+  before_filter :authenticate_user!, except: [:jsonUpdate, :jsonSignUp]
+  after_action :verify_authorized, except: [:messages, :jsonUpdate, :jsonSignUp]
   before_filter :require_admin, only: [:messages]
 
   def index
@@ -8,10 +8,7 @@ class UsersController < ApplicationController
     authorize User
   end
 
-  def indexj
 
-
-  end
 
   def show
     @user = User.find(params[:id])
@@ -22,11 +19,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     authorize @user
     if @user.update_attributes(secure_params)
-      @msg = gen_res_message("user update", Time.now.to_date, MsgType[:user_suc], "successfully updated user's information")
+      @msg = gen_res_message("User update", Time.now.to_date, MsgType[:user_suc], "successfully updated user's information")
 #      redirect_to users_path, :notice => "User updated."
        render plain: @msg
     else
-      @msg = gen_res_message("user update", Time.now.to_date, MsgType[:user_err], "failed to update user's information")
+      @msg = gen_res_message("Unable to update user", Time.now.to_date, MsgType[:user_err], "failed to update user's information")
 #      redirect_to users_path, :alert => "Unable to update user."
       render plain: @msg
     end
@@ -50,6 +47,30 @@ class UsersController < ApplicationController
     puts @messages.size
     render 'messages'
   end
+
+
+
+
+#jsons
+
+  def jsonUpdate
+    @msg = gen_res_message("User update", Time.now.to_date, MsgType[:user_suc], "successfully updated user's information")
+    render plain:@msg
+  end
+
+  def jsonSignUp
+    @msg = gen_res_message("User signUp", Time.now.to_date, MsgType[:user_suc], session['session_id'])
+    render plain:@msg
+  end
+
+  def jsonSignUpFail
+    @msg = gen_res_message("User signUp", Time.now.to_date, MsgType[:user_suc], "signUp failed")
+    render plain:@msg
+  end
+
+
+
+
 
   private
 

@@ -17,6 +17,10 @@ class ApplicationController < ActionController::Base
     attr_accessor :title, :id, :date, :content
   end
 
+  class UserJSON
+    attr_accessor :email, :name, :session
+  end
+
   protected
   def gen_res_message(title, time, msgType, msgContent)
     res = ResJSON.new

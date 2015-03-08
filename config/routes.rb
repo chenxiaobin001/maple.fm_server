@@ -2,11 +2,12 @@ Rails.application.routes.draw do
 
 
 #  devise_for :users, :controllers => { :registrations => "users/registrations" }
-
+#  devise_for :users, :controllers => {sessions: 'sessions', registrations: 'registrations'}
+  devise_for :users, :controllers => {registrations: 'registrations'}
   get 'gcm_app/index'
 
   root to: 'visitors#index'
-  devise_for :users
+#  devise_for :users
   resources :users
   resources :notifications
   resources :messages, :only => [:index, :show]
@@ -18,7 +19,9 @@ Rails.application.routes.draw do
   get 'admin/index', to: 'admin#index'
 
   #users
-#  get 'user/index', to: 'users#index1'
+  get '/user/json/signUp', to: 'users#jsonSignUp'
+  get '/user/json/signUpFail', to: 'users#jsonSignUpFail'
+  get '/user/json/update', to: 'users#jsonUpdate'
 
   #messages
   get 'message/push', to: 'messages#push'
