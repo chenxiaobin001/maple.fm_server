@@ -1,7 +1,7 @@
 class MessagesController < ApplicationController
   before_filter :authenticate_user!
   before_filter :require_admin, except: [:push]
-
+  skip_before_filter :verify_authenticity_token, only: [:push]
   class Msg
 
     attr_accessor :id, :data, :server
