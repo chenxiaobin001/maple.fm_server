@@ -32,9 +32,11 @@ class ApplicationController < ActionController::Base
     res.to_json
   end
 
+=begin
   def after_sign_out_path_for(resource_or_scope)
     '/user/json/signOut'
   end
+=end
 
   def json_request?
     request.format.json?

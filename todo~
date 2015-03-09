@@ -1,3 +1,36 @@
 Device registered, registration ID=APA91bGaf5el8b5KNlJvKWFGk5m22Ak1sbi5iRIbWuoKCy92FYyQ4dL32P5aPCIhe_h7Hhgmy2kQjDIj6t9feFuagaRu7mk-xSz6bFuL6jNavy_eJFrViw8-a5P-NIIKVGGx2xjEntK3PyEmc4r_A4Ssp05oGvKbJw
 
 user-multi-devices
+
+{"user_name": "New item", "user_email": "2009@gmail.com", "user_password": "20090000", "user_password_confirmation": "20090000", "user_server": "2009", "user_device_token": "2009"}
+
+sender=New&text=20091%40gmail.com&server=20090000
+
+
+Started DELETE "/users/sign_out"
+
+http://localhost:3000/users/sign_in.json
+{
+   "user": 
+    {
+       "email":  "user@example.com",
+       "password":  "changeme"
+    }
+   
+}
+
+Started PUT "/users"
+{
+   "user": 
+    {
+       "name": "weqwe",
+       "email":  "user@example.com",
+       "password": null,
+       "password_confirmation" : null,
+       "server": "3123",
+       "device_token": "asdfdsf",
+       "current_password":  "changeme"
+    } 
+}
+
+

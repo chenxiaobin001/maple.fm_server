@@ -52,6 +52,7 @@ class UsersController < ApplicationController
 
 
 #jsons
+=begin
 
   def jsonUpdate
     @msg = gen_res_message("User update", Time.now.to_date, MsgType[:user_suc], "successfully updated user's information")
@@ -73,6 +74,7 @@ class UsersController < ApplicationController
     render plain:@msg
   end
 
+=end
 
 
   private

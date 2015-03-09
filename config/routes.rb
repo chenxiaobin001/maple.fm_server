@@ -2,8 +2,8 @@ Rails.application.routes.draw do
 
 
 #  devise_for :users, :controllers => { :registrations => "users/registrations" }
-#  devise_for :users, :controllers => {sessions: 'sessions', registrations: 'registrations'}
-  devise_for :users, :controllers => {registrations: 'registrations'}
+  devise_for :users, :controllers => {sessions: 'sessions', registrations: 'registrations'}
+#  devise_for :users, :controllers => {registrations: 'registrations'}
   get 'gcm_app/index'
 
   root to: 'visitors#index'
@@ -19,10 +19,12 @@ Rails.application.routes.draw do
   get 'admin/index', to: 'admin#index'
 
   #users
+=begin
   get '/user/json/signUp', to: 'users#jsonSignUp'
   get '/user/json/signUpFail', to: 'users#jsonSignUpFail'
   get '/user/json/update', to: 'users#jsonUpdate'
   get '/user/json/signOut', to: 'users#jsonSignOut'
+=end
 
   #messages
   post 'message/push', to: 'messages#push'

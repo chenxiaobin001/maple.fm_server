@@ -5,3 +5,32 @@ user-multi-devices
 {"user_name": "New item", "user_email": "2009@gmail.com", "user_password": "20090000", "user_password_confirmation": "20090000", "user_server": "2009", "user_device_token": "2009"}
 
 sender=New&text=20091%40gmail.com&server=20090000
+
+
+Started DELETE "/users/sign_out"
+
+http://localhost:3000/users/sign_in.json
+{
+   "user": 
+    {
+       "email":  "user@example.com",
+       "password":  "changeme"
+    }
+   
+}
+
+Started PUT "/users"
+{
+   "user": 
+    {
+       "name": "weqwe",
+       "email":  "user@example.com",
+       "password": null,
+       "password_confirmation" : null,
+       "server": "3123",
+       "device_token": "asdfdsf",
+       "current_password":  "changeme"
+    } 
+}
+
+
