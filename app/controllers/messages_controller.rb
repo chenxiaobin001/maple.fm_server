@@ -34,15 +34,12 @@ class MessagesController < ApplicationController
     ret = n.save
 
     if ret
-      user_message = UserMessage.new
-      user_message.user_id = 2
-      user_message.message_id = n.id
-      user_message.save!
+      save_user_message_relation(current_user.id, n.id)
       respond_to do |format|
         format.html {
-          render plain: gen_res_message(name, user_message.created_at.to_date, MsgType[:msg_suc], "success")
+          render plain: gen_res_message(name, n.created_at.to_date, MsgType[:msg_suc], "success")
         }
-        format.json { render json: gen_res_message(name, user_message.created_at.to_date, MsgType[:msg_suc], "success") }
+        format.json { render json: gen_res_message(name, n.created_at.to_date, MsgType[:msg_suc], "success") }
       end
     else
       respond_to do |format|
@@ -58,4 +55,11 @@ class MessagesController < ApplicationController
 
   private
 
+  def save_user_message_relation(user_id, message_id)
+
+    @user_message = UserMessage.new
+    @user_message.user_id = user_id
+    @user_message.message_id = message_id
+    @user_message.save!
+  end
 end

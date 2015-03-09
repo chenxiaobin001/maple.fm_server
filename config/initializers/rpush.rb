@@ -128,6 +128,7 @@ Rpush.reflect do |on|
   # end
 end
 
+=begin
 if defined?(Rails)
   ActiveSupport.on_load(:after_initialize) do
     Rpush.embed
@@ -135,5 +136,6 @@ if defined?(Rails)
 else
   Rpush.embed
 end
+=end
 
 

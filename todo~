@@ -36,5 +36,16 @@ Started PUT "/users"
 
 { entity: { authentication_token: 'X-Entity-Token', email: 'X-Entity-Email'} }
 
+{
+  "sender" : "aaaaa",
+  "text" : "this is a text",
+  "server" : "scania"
+}
 
+token header:
+# config.header_names = { user: { authentication_token: 'X-User-Token', email: 'X-User-Email' } }
+
+X-User-Token 6LwTY93s17kyaGXxrstm
+
+{"errors":["Title is too short (minimum is 5 characters)"]}
 

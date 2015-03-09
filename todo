@@ -47,4 +47,5 @@ token header:
 
 X-User-Token 6LwTY93s17kyaGXxrstm
 
+{"errors":["Title is too short (minimum is 5 characters)"]}
 
