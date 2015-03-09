@@ -22,7 +22,12 @@ class ArticlesController < ApplicationController
   def edit
     @article = Article.find(params[:id])
     unless check_user_authority(current_user.id, @article.id)
-      format.json { render :json => { :errors => ["not the author!"]}}
+      respond_to do |format|
+        format.html {@articles = Article.all}
+        format.json { render :json => { :errors => ["not the author!"]}}
+
+      end
+      return
     end
     respond_to do |format|
       format.html {@article = Article.find(params[:id])}
@@ -34,8 +39,11 @@ class ArticlesController < ApplicationController
   def update
     @article = Article.find(params[:id])
     unless check_user_authority(current_user.id, @article.id)
-      format.html {@articles = Article.all}
-      format.json { render :json => { :errors => ["not the author!"]}}
+      respond_to do |format|
+        format.html {@articles = Article.all}
+        format.json { render :json => { :errors => ["not the author!"]}}
+      end
+      return
     end
     if @article.update(article_params)
       respond_to do |format|
