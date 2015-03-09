@@ -1,6 +1,6 @@
 class NotificationsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:index, :push]
-  before_filter :require_admin, :except => [:index, :push]
+  before_filter :authenticate_user!, :except => [:index]
+  before_filter :require_admin, :except => [:index]
 
   respond_to :json
 

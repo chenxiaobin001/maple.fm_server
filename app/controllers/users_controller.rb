@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!, except: [:jsonUpdate, :jsonSignUp, :jsonSignOut]
-  after_action :verify_authorized, except: [:messages, :jsonUpdate, :jsonSignUp, :jsonSignOut]
+  before_filter :authenticate_user!, except: []
+  after_action :verify_authorized, except: [:messages]
   before_filter :require_admin, only: [:messages]
 
   def index
