@@ -5,17 +5,33 @@ class CommentsController < ApplicationController
   def index
     @article = Article.find(params[:article_id])
     @comments = @article.comments
+    respond_to do |format|
+      format.html {@comments = @article.comments}
+      format.json {render :json => @article.comments}
+    end
   end
 
   def create
     @article = Article.find(params[:article_id])
     @comment = @article.comments.create(comment_params)
-    redirect_to article_path(@article)
+    save_user_comment_relation(current_user.id, @comment.id)
+
+    respond_to do |format|
+      format.html {redirect_to article_path(@article)}
+      format.json {render :json => @article.comments}
+    end
   end
 
   private
   def comment_params
     params.require(:comment).permit(:commenter, :body)
+  end
+
+  def save_user_comment_relation(user_id, comment_id)
+    user_comment = UserComment.new
+    user_comment.user_id = user_id
+    user_comment.comment_id = comment_id
+    user_comment.save!
   end
 
 end
