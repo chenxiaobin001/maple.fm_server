@@ -1,7 +1,7 @@
 class MessagesController < ApplicationController
   before_filter :authenticate_user!
   before_filter :require_admin, except: [:push]
-  skip_before_filter :verify_authenticity_token, only: [:push]
+
   class Msg
 
     attr_accessor :id, :data, :server
@@ -40,14 +40,14 @@ class MessagesController < ApplicationController
         format.html {
           render plain: gen_res_message(name, user_message.created_at.to_date, MsgType[:msg_suc], "success")
         }
- #       format.json render json: gen_success_message(user_message.created_at.to_date)
+        format.json render json: gen_res_message(name, user_message.created_at.to_date, MsgType[:msg_suc], "success")
       end
     else
       respond_to do |format|
         format.html {
           render plain: gen_res_message(nil, n.created_at.to_date, MsgType[:msg_err], "failed to send")
         }
- #       format.json render json: gen_error_message(n.created_at.to_date)
+        format.json render json: gen_res_message(nil, n.created_at.to_date, MsgType[:msg_err], "failed to send")
       end
     end
 
