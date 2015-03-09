@@ -23,7 +23,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     unless check_user_authority(current_user.id, @article.id)
       respond_to do |format|
-        format.html {@articles = Article.all}
+        format.html {redirect_to articles_path}
         format.json { render :json => { :errors => ["not the author!"]}}
 
       end
@@ -40,7 +40,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     unless check_user_authority(current_user.id, @article.id)
       respond_to do |format|
-        format.html {@articles = Article.all}
+        format.html {redirect_to articles_path}
         format.json { render :json => { :errors => ["not the author!"]}}
       end
       return
