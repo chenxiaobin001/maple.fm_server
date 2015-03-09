@@ -4,6 +4,7 @@ user-multi-devices
 
 {"user_name": "New item", "user_email": "2009@gmail.com", "user_password": "20090000", "user_password_confirmation": "20090000", "user_server": "2009", "user_device_token": "2009"}
 
+authentication_token: "H9LHiM5h_kjB4SsnFbaC"
 sender=New&text=20091%40gmail.com&server=20090000
 
 
@@ -32,5 +33,8 @@ Started PUT "/users"
        "current_password":  "changeme"
     } 
 }
+
+{ entity: { authentication_token: 'X-Entity-Token', email: 'X-Entity-Email'} }
+
 
 
