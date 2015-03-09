@@ -5,6 +5,9 @@ class ApplicationController < ActionController::Base
   skip_before_filter :verify_authenticity_token, if: :json_request?
 #  before_action :configure_permitted_parameters, if: :devise_controller?
 
+  #token
+  acts_as_token_authentication_handler_for User
+
   def require_admin
     unless current_user && current_user.role == 'admin'
       flash[:error] = "You are not an admin"

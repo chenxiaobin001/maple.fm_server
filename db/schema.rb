@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150309101124) do
+ActiveRecord::Schema.define(version: 20150309103359) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -122,8 +122,10 @@ ActiveRecord::Schema.define(version: 20150309101124) do
     t.integer  "role"
     t.string   "device_token"
     t.integer  "server"
+    t.string   "authentication_token"
   end
 
+  add_index "users", ["authentication_token"], name: "index_users_on_authentication_token"
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
