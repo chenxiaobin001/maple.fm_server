@@ -10,6 +10,9 @@ Rails.application.routes.draw do
 #  devise_for :users
   resources :users
   resources :notifications
+  resources :articles do
+    resources :comments
+  end
   resources :messages, :only => [:index, :show, :new, :create]
   get 'notification/index', to: 'notifications#index'
   get 'notification/index1', to: 'notifications#index1'
