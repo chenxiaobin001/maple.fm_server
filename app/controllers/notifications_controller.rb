@@ -2,6 +2,8 @@ class NotificationsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index]
   before_filter :require_admin, :except => [:index]
 
+  acts_as_token_authentication_handler_for User, except: [:index]
+  
   respond_to :json
 
   def index1

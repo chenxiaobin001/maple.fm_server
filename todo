@@ -20,6 +20,18 @@ http://localhost:3000/users/sign_in.json
    
 }
 
+
+{
+   "user": 
+    {
+       "name": "weqwe",
+       "email":  "user1@example.com",
+       "password": "11111111",
+       "password_confirmation" : "11111111",
+       "server": "3123",
+       "device_token": "asdfdsf"
+    } 
+}
 Started PUT "/users"
 {
    "user": 

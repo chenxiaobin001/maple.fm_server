@@ -1,6 +1,8 @@
 class CommentsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: [:index, :show]
   before_filter :require_admin, only: [:destroy]
+
+  acts_as_token_authentication_handler_for User, except: [:index, :show]
 
   def index
     @article = Article.find(params[:article_id])
