@@ -15,7 +15,7 @@ class NotificationsController < ApplicationController
     @date = Time.now
     @notifications = Notification.all
     respond_to do |format|
-      format.html # show.html.erb
+      format.html {render plain: "no thing"}
       format.json {
         tmp = ResJSON.new
         notification = @notifications.last
