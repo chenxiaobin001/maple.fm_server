@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
   before_filter :require_admin, only: [:destroy]
 
+  skip_before_filter :authenticate_user!, if: :json_request?
   acts_as_token_authentication_handler_for User, except: [:index, :show]
 
   def index
