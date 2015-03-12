@@ -58,6 +58,13 @@ token header:
 # config.header_names = { user: { authentication_token: 'X-User-Token', email: 'X-User-Email' } }
 
 X-User-Token 6LwTY93s17kyaGXxrstm
-
+{
+   "article": 
+    {
+       "title":  "aaaaa",
+       "text":  "changeme"
+    }
+   
+}
 {"errors":["Title is too short (minimum is 5 characters)"]}
 

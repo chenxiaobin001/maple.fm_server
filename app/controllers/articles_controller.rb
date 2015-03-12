@@ -63,7 +63,8 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-
+    user = User.find(current_user.id)
+    @article.name = user.name
     if @article.save
       save_user_article_relation(current_user.id, @article.id)
       respond_to do |format|
