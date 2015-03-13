@@ -18,8 +18,8 @@ class CommentsController < ApplicationController
     @article = Article.find(params[:article_id])
     @comment = @article.comments.create(comment_params)
     @comment.id1 = current_user.id
-    @comment.id2 = params[:comment_id2]
-    @comment.commenter2 = params[:commenter2]
+    @comment.id2 = params[:comment][:comment_id2]
+    @comment.commenter2 = params[:comment][:commenter2]
     @comment.save!
     save_user_comment_relation(current_user.id, @comment.id)
 

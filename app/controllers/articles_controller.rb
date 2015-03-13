@@ -15,7 +15,17 @@ class ArticlesController < ApplicationController
   def index
     respond_to do |format|
       format.html {@articles = Article.all}
-      format.json {render :json => Article.all}
+      format.json {
+        @articles = Article.all
+        ret = []
+        @articles.each do |article|
+          i = article.comments.size
+          article = article.as_json(:root => true)
+          article[:comment] = i
+          ret << article
+        end
+        render :json => ret
+      }
     end
   end
 
@@ -99,7 +109,6 @@ class ArticlesController < ApplicationController
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
-
     redirect_to articles_path
   end
 
