@@ -20,7 +20,7 @@ class ArticlesController < ApplicationController
         ret = []
         @articles.each do |article|
           i = article.comments.size
-          article = article.as_json(:root => true)
+          article = article.as_json(:root => true)  
           article[:comment] = i
           ret << article
         end
