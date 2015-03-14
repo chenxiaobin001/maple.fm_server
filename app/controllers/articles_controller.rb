@@ -60,6 +60,7 @@ class ArticlesController < ApplicationController
       return
     end
     if @article.update(article_params)
+      @article.touch(:lastEditted)
       respond_to do |format|
         format.html {redirect_to @article}
         format.json {render :json => @article}
@@ -78,6 +79,7 @@ class ArticlesController < ApplicationController
     user = User.find(current_user.id)
     @article.name = user.name
     if @article.save
+      @article.touch(:lastEditted)
       save_user_article_relation(current_user.id, @article.id)
       respond_to do |format|
         format.html {redirect_to @article}
