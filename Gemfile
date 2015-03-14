@@ -10,6 +10,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'rpush'
 gem 'composite_primary_keys', '~> 8.0.0'
 gem 'simple_token_authentication', '~> 1.0'
+gem 'rack-attack'
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
