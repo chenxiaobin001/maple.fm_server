@@ -1,7 +1,7 @@
 Rack::Attack.blacklisted_response = lambda do |env|
   # Using 503 because it may make attacker think that they have successfully
   # DOSed the site. Rack::Attack returns 403 for blacklists by default
-  [ 503, {}, ['{"error:":"["Too much request, try it after 20s."]"}']]
+  [ 503, {}, ['{"error":["Too much request, try it after 20s."]}']]
 end
 
 Rack::Attack.throttled_response = lambda do |env|
@@ -14,7 +14,7 @@ Rack::Attack.throttled_response = lambda do |env|
 
   # Using 503 because it may make attacker think that they have successfully
   # DOSed the site. Rack::Attack returns 429 for throttling by default
-  [ 503, {}, ['{"error:":"["Too much request, try it after 20s."]"}']]
+  [ 503, {}, ['{"error":["Too much request, try it after 20s."]}']]
 end
 
 Rack::Attack.throttle('logins/ip1', :limit => 5, :period => 20.seconds) do |req|
