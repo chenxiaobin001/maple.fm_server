@@ -24,19 +24,13 @@ Rack::Attack.throttle('logins/ip1', :limit => 5, :period => 20.seconds) do |req|
 end
 
 Rack::Attack.throttle('signUp/ip', :limit => 2, :period => 20.seconds) do |req|
-  if req.path == '/users/sign_up.json' && req.post?
+  if req.path == '/users.json' && req.post?
     req.ip
   end
 end
 
 Rack::Attack.throttle('signUp1/ip', :limit => 2, :period => 20.seconds) do |req|
-  if req.path == '/users/sign_up' && req.post?
-    req.ip
-  end
-end
-
-Rack::Attack.throttle('signUp1/ip', :limit => 2, :period => 20.seconds) do |req|
-  if req.path == '/users/sign_up.json' && req.post?
+  if req.path == '/users' && req.post?
     req.ip
   end
 end
