@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
 
   def create
     @article = Article.find(params[:article_id])
-    @article.save!
+    @article.touch!
     @comment = @article.comments.create(comment_params)
     @comment.id1 = current_user.id
     @comment.id2 = params[:comment][:comment_id2]
