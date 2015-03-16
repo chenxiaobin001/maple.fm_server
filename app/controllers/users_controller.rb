@@ -4,7 +4,8 @@ class UsersController < ApplicationController
   before_filter :require_admin, only: [:messages]
 
   def index
-    @users = User.all
+    @users = User.order(:id)
+
     authorize User
   end
 
